@@ -1,0 +1,8 @@
+.Users {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0px auto;
+    background-color: #BDBDBD;
+    justify-content: space-around;
+}

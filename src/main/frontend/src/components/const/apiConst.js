@@ -1,0 +1,5 @@
+export const CUSTOMERS = "http://localhost:8080/customers"
+export const SERVICES= "http://localhost:8080/services"
+export const AGREEMENTS= "http://localhost:8080/agreements"
+export const USERS = "https://jsonplaceholder.typicode.com/users"
+export const USER = "https://jsonplaceholder.typicode.com/users/"
