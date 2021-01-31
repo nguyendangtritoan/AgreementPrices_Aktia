@@ -3,7 +3,9 @@ package com.rest.agreement;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rest.agreement.controller.CustomerController;
 import com.rest.agreement.entity.CustomerEntity;
+import com.rest.agreement.repository.AgreementRepo;
 import com.rest.agreement.repository.CustomerRepo;
+import com.rest.agreement.repository.ServiceRepo;
 import com.rest.agreement.service.CustomerSer;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -30,6 +32,12 @@ public class CustomerControllerTest {
 
     @MockBean
     private CustomerRepo customerRepo;
+
+    @MockBean
+    private ServiceRepo serviceRepo;
+
+    @MockBean
+    private AgreementRepo agreementRepo;
 
     @MockBean
     private CustomerSer customerSer;
@@ -79,19 +87,5 @@ public class CustomerControllerTest {
                 .content(objectMapper.writeValueAsString(newEntity))
         ).andExpect(status().isOk());
     }
-
-    @Test
-    public void testDeleteCustomer() throws Exception {
-
-        long id = 1;
-        String urlDelete = "/customer/delete/"+id;
-
-        Mockito.doNothing().when(customerRepo).deleteById(id);
-
-        mockMvc.perform(delete(urlDelete)).andExpect(status().isOk());
-
-        Mockito.verify(customerRepo, Mockito.times(1)).deleteById(id);
-    }
-
 
 }

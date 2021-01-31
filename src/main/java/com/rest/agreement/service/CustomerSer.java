@@ -1,7 +1,11 @@
 package com.rest.agreement.service;
 
+import com.rest.agreement.entity.AgreementEntity;
 import com.rest.agreement.entity.CustomerEntity;
+import com.rest.agreement.entity.ServiceEntity;
+import com.rest.agreement.repository.AgreementRepo;
 import com.rest.agreement.repository.CustomerRepo;
+import com.rest.agreement.repository.ServiceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +15,21 @@ import java.util.List;
 public class CustomerSer {
 
     private CustomerRepo customerRepo;
+    private AgreementRepo agreementRepo;
+    private ServiceRepo serviceRepo;
 
     @Autowired
     public void setCustomerRepo(CustomerRepo customerRepo) {
         this.customerRepo = customerRepo;
+    }
+
+    @Autowired
+    public void setAgreementRepo(AgreementRepo agreementRepo) {
+        this.agreementRepo = agreementRepo;
+    }
+    @Autowired
+    public void setServiceRepo(ServiceRepo serviceRepo) {
+        this.serviceRepo = serviceRepo;
     }
 
     public CustomerEntity saveCustomer(CustomerEntity customerEntity){
@@ -34,6 +49,15 @@ public class CustomerSer {
     }
 
     public String deleteCustomer(long id){
+        List<AgreementEntity> agreementEntityList = agreementRepo.findByCustomerEntity_IdContaining(id);
+        List<List<ServiceEntity>> serviceEntityList = null;
+        for(AgreementEntity agreementEntity : agreementEntityList){
+            for(ServiceEntity serviceEntity : serviceRepo.findByAgreementEntity_Id(agreementEntity.getId())){
+                serviceRepo.deleteById(serviceEntity.getId());
+            }
+            agreementRepo.deleteById(agreementEntity.getId());
+        }
+
         customerRepo.deleteById(id);
         return "Customer removed! "+id;
     }
