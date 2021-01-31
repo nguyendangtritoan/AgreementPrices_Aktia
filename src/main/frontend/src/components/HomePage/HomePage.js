@@ -1,28 +1,19 @@
-import {useEffect, useState} from "react";
-import User from "./User/User"
-import {USERS} from "../const/apiConst"
-import axios from "axios"
-import './HomePage.css'
+import "./HomePage.css"
+import {useState} from "react";
+import AddComponent from "./Function/AddComponent";
+import UpdateComponent from "./Function/UpdateComponent";
+
 
 function HomePage() {
 
-    const [users, setUsers] = useState([])
-
-    const fetchData = async () => {
-        await axios(
-            USERS,
-        ).then((resp) => {
-            setUsers(resp.data);
-        }).catch(setUsers([]))
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, [])
-
     return (
-        <div className="Users">
-            <User user={users} />
+        <div>
+            <p>***</p>
+            <div className="welcome">
+                <p>AGREEMENT SERVICE</p>
+            </div>
+            <AddComponent />
+            <UpdateComponent />
         </div>
     );
 }

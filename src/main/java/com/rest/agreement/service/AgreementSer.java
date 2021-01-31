@@ -1,11 +1,13 @@
 package com.rest.agreement.service;
 
 import com.rest.agreement.entity.AgreementEntity;
+import com.rest.agreement.entity.CustomerEntity;
 import com.rest.agreement.repository.AgreementRepo;
 import com.rest.agreement.repository.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -25,8 +27,13 @@ public class AgreementSer {
     }
 
     public AgreementEntity addAgreement(AgreementEntity agreementEntity){
-        if(customerRepo.findById(agreementEntity.getCustomerEntity().getId()).orElse(null) == null){
+
+        CustomerEntity customerEntity = customerRepo.findById(agreementEntity.getCustomerEntity().getId()).orElse(null);
+
+        if(customerEntity == null){
             customerRepo.save(agreementEntity.getCustomerEntity());
+        }else {
+            agreementEntity.setCustomerEntity(customerEntity);
         }
         return agreementRepo.save(agreementEntity);
     }

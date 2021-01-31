@@ -1,0 +1,40 @@
+.agreement {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    min-height: 300px;
+    margin: 0.4em;
+    border-radius: 1em;
+    background-color: lightblue;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.agreementDetail {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 50px;
+    background-color: lightblue;
+    justify-content: space-around;
+    margin-left: 45%;
+}
+
+.info {
+    padding: 20px;
+}
+
+.btn {
+    background-color: lightcoral;
+}
+
+.agreements {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0 auto;
+    background-color: #BDBDBD;
+    justify-content: space-around;
+}
+

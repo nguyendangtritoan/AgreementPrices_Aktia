@@ -1,4 +1,4 @@
-.user {
+.customer {
     display: flex;
     flex-direction: column;
     width: 200px;
@@ -20,7 +20,7 @@
     text-align: center;
 }
 
-.userDetail {
+.customerDetail {
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -35,6 +35,17 @@
     padding: 20px;
 }
 
+
 .btn {
     background-color: lightcoral;
 }
+
+.customers {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0 auto;
+    background-color: #BDBDBD;
+    justify-content: space-around;
+}
+

@@ -9,8 +9,14 @@ function Nav() {
                 <Link to='/'>
                     <li>HomePage</li>
                 </Link>
-                <Link to='/about'>
-                    <li>About</li>
+                <Link to='/customers'>
+                    <li>Customers</li>
+                </Link>
+                <Link to='/agreements'>
+                    <li>Agreements</li>
+                </Link>
+                <Link to='/services'>
+                    <li>Services</li>
                 </Link>
             </ul>
         </nav>

@@ -5,9 +5,11 @@ import com.rest.agreement.service.ServiceSer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class ServiceController {
 
     private ServiceSer serviceSer;
@@ -40,5 +42,10 @@ public class ServiceController {
     @DeleteMapping("/deleteService/{id}")
     public String deleteService(@PathVariable long id){
         return serviceSer.removeService(id);
+    }
+
+    @GetMapping("/getSumOfFee/{id}")
+    public BigDecimal getSumOfFee(@PathVariable long id){
+        return serviceSer.getSumOfFee(id);
     }
 }
