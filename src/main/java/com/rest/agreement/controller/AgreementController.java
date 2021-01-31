@@ -19,12 +19,12 @@ public class AgreementController {
         this.agreementSer = agreementSer;
     }
 
-    @PostMapping("/addAgreement")
+    @PostMapping("/agreement/save")
     public AgreementEntity addAgreement(@RequestBody AgreementEntity agreementEntity){
         return agreementSer.addAgreement(agreementEntity);
     }
 
-    @GetMapping(value = "/agreements")
+    @GetMapping("/agreement/list")
     public List<AgreementEntity> getAllAgreements(){
         return agreementSer.getAllAgreements();
     }
@@ -39,12 +39,12 @@ public class AgreementController {
         return agreementSer.getAgreementByCusId(id);
     }
 
-    @PutMapping("/updateAgreement")
+    @PutMapping("/agreement/update")
     public AgreementEntity updateAgreement(@RequestBody AgreementEntity agreementEntity){
         return agreementSer.updateAgreement(agreementEntity);
     }
 
-    @DeleteMapping("/deleteAgreement/{id}")
+    @DeleteMapping("/agreement/delete/{id}")
     public String deleteAgreement(@PathVariable long id){
         return agreementSer.deleteAgreement(id);
     }

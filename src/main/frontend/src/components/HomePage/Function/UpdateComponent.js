@@ -25,12 +25,12 @@ function UpdateComponent(props) {
                     "idNumber": customerIdNumber,
                     "name": customerName
                 },
-                "typeAgreement": agreementType,
+                "typeAgreement": parseInt(agreementType),
                 "startAgreement": startDate.replace("T", " "),
                 "endAgreement": endDate.replace("T", " ")
             },
-            "typeService": typeService,
-            "feeService": feeService
+            "typeService": parseInt(typeService),
+            "feeService": parseInt(feeService)
         }).then(r => {
             if (r.data.id !== null) {
                 setSuccess("1");
@@ -52,33 +52,33 @@ function UpdateComponent(props) {
             <div className="updateSection">
                 <div className="formSection">
                     <h3> Update service </h3>
-                    <form>
-                        <input required name="id" placeholder="Id of service" value={serviceId}
+                    <form onSubmit={handleUpdateService}>
+                        <input required={true} name="id" placeholder="Id of service" value={serviceId}
                                onChange={e => setServiceId(e.target.value)} />
                         <br />
-                        <input required name="customerIdNumber" placeholder="customer ID number"
+                        <input required={true} name="customerIdNumber" placeholder="customer ID number"
                                value={customerIdNumber}
                                onChange={e => setCustomerIdNumber(e.target.value)} />
                         <br />
-                        <input required name="customerName" placeholder="Customer name" value={customerName}
+                        <input required={true} name="customerName" placeholder="Customer name" value={customerName}
                                onChange={e => setCustomerName(e.target.value)} />
                         <br />
-                        <input required name="agreementType" placeholder="Agreement type" value={agreementType}
+                        <input required={true} name="agreementType" placeholder="Agreement type" value={agreementType}
                                onChange={e => setAgreementType(e.target.value)} />
                         <br />
-                        <input required type="datetime-local" name="end" step="1" value={startDate}
+                        <input required={true} type="datetime-local" name="end" step="1" value={startDate}
                                onChange={e => setStartDate(e.target.value)} />
                         <br />
                         <input type="datetime-local" name="end" step="1" value={endDate}
                                onChange={e => setEndDate(e.target.value)} />
                         <br />
-                        <input required name="typeService" placeholder="Service type" value={typeService}
+                        <input required={true} name="typeService" placeholder="Service type" value={typeService}
                                onChange={e => setTypeService(e.target.value)} />
                         <br />
-                        <input required name="feeService" placeholder="Service fee" value={feeService}
+                        <input required={true} name="feeService" placeholder="Service fee" value={feeService}
                                onChange={e => setFee(e.target.value)} />
                         <br />
-                        <input type="submit" onClick={e => handleUpdateService(e)} />
+                        <input type="submit"/>
                     </form>
                 </div>
             </div>

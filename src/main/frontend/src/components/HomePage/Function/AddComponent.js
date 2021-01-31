@@ -11,14 +11,14 @@ function AddComponent(props) {
 
     //Agreement
     const [customerId, setCustomerId] = useState("");
-    const [agrType, setAgrType] = useState(0);
+    const [agrType, setAgrType] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
 
     //Service
     const [agreementId, setAgreementId] = useState("")
-    const [serviceType, setServiceType] = useState(0)
-    const [serviceFee, setServiceFee] = useState(0)
+    const [serviceType, setServiceType] = useState("")
+    const [serviceFee, setServiceFee] = useState("")
 
     const [isSuccess, setSuccess] = useState("")
 
@@ -42,14 +42,14 @@ function AddComponent(props) {
             "customerEntity": {
                 "id": customerId
             },
-            "typeAgreement": agrType,
+            "typeAgreement": parseInt(agrType),
             "startAgreement": startDate.replace("T", " "),
             "endAgreement": endDate.replace("T", " ")
         }).then(r => {
             if (r.data.id !== null) {
                 setSuccess("1");
                 setCustomerId("")
-                setAgrType(0)
+                setAgrType("")
                 setStartDate("")
                 setEndDate("")
             }
@@ -62,13 +62,14 @@ function AddComponent(props) {
             "agreementEntity": {
                 "id": agreementId
             },
-            "typeService": serviceType,
-            "feeService": serviceFee
+            "typeService": parseInt(serviceType),
+            "feeService": parseInt(serviceFee)
         }).then(r => {
             if (r.data.id !== null) {
                 setSuccess("1");
                 setAgreementId("")
-                setServiceType(0)
+                setServiceType("")
+                setServiceFee("")
             }
         })
     }
@@ -77,51 +78,51 @@ function AddComponent(props) {
             <div className="addSection">
                 <div>
                     <h3> Add customer </h3>
-                    <form onSubmit="return false">
-                        <input required name="firstName" placeholder="First name" value={name}
+                    <form onSubmit={handleAddCustomer}>
+                        <input required={true} name="firstName" placeholder="First name" value={name}
                                onChange={e => setName(e.target.value)} />
                         <br />
-                        <input required name="idNumber" placeholder="Identification number" value={idNumber}
+                        <input required={true} name="idNumber" placeholder="Identification number" value={idNumber}
                                onChange={e => setIdNumber(e.target.value)} />
                         <br />
-                        <input type="submit" value="Submit" onClick={e => handleAddCustomer(e)} />
+                        <input type="submit" value="Submit"/>
                     </form>
                 </div>
                 <div className="formSection">
                     <h3> Add agreement </h3>
-                    <form>
+                    <form onSubmit={handleAddAgreement}>
                         <label>Customer id: </label>
-                        <input required name="customerId" placeholder="Customer id" value={customerId}
+                        <input required={true} name="customerId" placeholder="Customer id" value={customerId}
                                onChange={e => setCustomerId(e.target.value)} />
                         <br />
                         <label>Agreement type: </label>
-                        <input required name="type" placeholder="Agreement type"
-                               onChange={e => setAgrType(parseInt(e.target.value))} />
+                        <input required={true} name="type" placeholder="Agreement type"
+                               onChange={e => setAgrType(e.target.value)} />
                         <br />
                         <label>Start date: </label>
-                        <input required type="datetime-local" name="start" step="1" value={startDate}
+                        <input required={true} type="datetime-local" name="start" step="1" value={startDate}
                                onChange={e => setStartDate(e.target.value)} />
                         <br />
                         <label>End date: </label>
                         <input type="datetime-local" name="end" step="1" value={endDate}
                                onChange={e => setEndDate(e.target.value)} />
                         <br />
-                        <input type="submit" onClick={e => handleAddAgreement(e)} />
+                        <input type="submit"/>
                     </form>
                 </div>
                 <div className="formSection">
                     <h3> Add service </h3>
-                    <form>
-                        <input required name="agreementId" placeholder="Agreement ID" value={agreementId}
+                    <form onSubmit={handleAddService}>
+                        <input required={true} name="agreementId" placeholder="Agreement ID" value={agreementId}
                                onChange={e => setAgreementId(e.target.value)} />
                         <br />
-                        <input required name="type" placeholder="Service type"
-                               onChange={e => setServiceType(parseInt(e.target.value))} />
+                        <input required={true} name="type" placeholder="Service type" value={serviceType}
+                               onChange={e => setServiceType(e.target.value)} />
                         <br />
-                        <input required name="fee" placeholder="Service fee"
-                               onChange={e => setServiceFee(parseInt(e.target.value))} />
+                        <input required={true} name="fee" placeholder="Service fee" value={serviceFee}
+                               onChange={e => setServiceFee(e.target.value)} />
                         <br />
-                        <input type="submit" value="Submit" onClick={e => handleAddService(e)} />
+                        <input type="submit" />
                     </form>
                 </div>
             </div>

@@ -19,27 +19,27 @@ public class ServiceController {
         this.serviceSer = serviceSer;
     }
 
-    @PostMapping("/addService")
+    @PostMapping("/service/save")
     public ServiceEntity addService(@RequestBody ServiceEntity serviceEntity){
         return serviceSer.addService(serviceEntity);
     }
 
-    @GetMapping("/getServiceById/{id}")
+    @GetMapping("/serviceById/{id}")
     public ServiceEntity getServiceById(@PathVariable long id){
         return serviceSer.getServiceById(id);
     }
 
-    @GetMapping("/services")
+    @GetMapping("/service/list")
     public List<ServiceEntity> getAllServices(){
         return serviceSer.getAllServices();
     }
 
-    @PutMapping("/updateService")
+    @PutMapping("/service/update")
     public ServiceEntity updateService(@RequestBody ServiceEntity serviceEntity){
         return serviceSer.updateService(serviceEntity);
     }
 
-    @DeleteMapping("/deleteService/{id}")
+    @DeleteMapping("/service/delete/{id}")
     public String deleteService(@PathVariable long id){
         return serviceSer.removeService(id);
     }

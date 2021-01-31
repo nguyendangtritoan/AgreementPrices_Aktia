@@ -37,34 +37,34 @@
 ## `Functionality`
 #### Read (get)
 
-    http://localhost:8080/customers => list all customers  
-    http://localhost:8080/services => list all services   
-    http://localhost:8080/agreements => list all agreements
+    http://localhost:8080/customer/list => list all customers  
+    http://localhost:8080/service/list => list all services   
+    http://localhost:8080/agreement/list => list all agreements
     
 #### Add (post method)
 
-    http://localhost:8080/addCustomer   
-    http://localhost:8080/addAgreement   
-    http://localhost:8080/addService
+    http://localhost:8080/customer/save
+    http://localhost:8080/service/save
+    http://localhost:8080/agreement/save
     
 #### Update (put method)
 
-    http://localhost:8080/updateCustomer    
-    http://localhost:8080/updateAgreement  
-    http://localhost:8080/updateService
+    http://localhost:8080/customer/update
+    http://localhost:8080/service/update
+    http://localhost:8080/agreement/update
     
 #### Delete (Delete method)
 
-    http://localhost:8080/deleteCustomer/{id}    
-    http://localhost:8080/deleteAgreement/{id}   
-    http://localhost:8080/deleteService/{id}
+    http://localhost:8080/customer/delete/{id}    
+    http://localhost:8080/service/delete/{id}   
+    http://localhost:8080/agreement/delete/{id}
     
 #### Other
     http://localhost:8080/customerById/{id}   
-    http://localhost:8080/customer/{name}    
+    http://localhost:8080/customerByName/{name}    
     http://localhost:8080/agreementById/{id}   
     http://localhost:8080/agreementByCusId/{id}
-    http://localhost:8080/getServiceById/{id}
+    http://localhost:8080/serviceById/{id}
     
 
 ## `Source code`
