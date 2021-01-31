@@ -34,7 +34,7 @@
     
     #### `npm start`     
       
-## Functionality
+## `Functionality`
 #### Read (get)
 
     http://localhost:8080/customers => list all customers  
