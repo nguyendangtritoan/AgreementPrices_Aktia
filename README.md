@@ -16,6 +16,7 @@
 
 ## `Usage`
 #### Backend side
+*   You can download the zip file to run the application rest api [Link](https://drive.google.com/drive/folders/1yon4KaTzI1KiMijN6gSLIs9EVayaxjfU?usp=sharing).
 *   In order to run this application, you need to have Java sdk (Recommend use 1.8) [Link to download](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
 *   In your terminal, navigate to the folder [target](target).
 *   Please provide your database information at 
