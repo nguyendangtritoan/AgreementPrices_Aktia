@@ -15,3 +15,5 @@ export const UPDATE_SERVICE = "http://localhost:8080/service/update"
 
 //DELETE DATA
 export const DELETE_CUSTOMER = "http://localhost:8080/customer/delete/"
+export const DELETE_AGREEMENT = "http://localhost:8080/agreement/delete/"
+export const DELETE_SERVICE = "http://localhost:8080/service/delete/"

@@ -1,7 +1,7 @@
 import "./Service.css";
 import {Link} from "react-router-dom"
 import axios from "axios";
-import {SERVICES} from "../../const/apiConst";
+import {DELETE_AGREEMENT, DELETE_SERVICE, SERVICES} from "../../const/apiConst";
 import {useEffect, useState} from "react";
 
 
@@ -17,6 +17,14 @@ const Service = (props) => {
         }).catch(setServices([]))
     };
 
+    const handleDelete = async (id, key) => {
+        console.log(id, key)
+        await axios.delete(DELETE_SERVICE+id).then(() => {
+            const newList = services.filter((service) => service.id !== id);
+            setServices(newList)
+        })
+    }
+
     useEffect(() => {
         fetchData();
     }, [])
@@ -25,7 +33,7 @@ const Service = (props) => {
         <div className="services">
             {services.length !== 0 ?
                 services.map((service, key) => (
-                    <div className="service">
+                    <div className="service" key={key}>
                         {service !== null && <>
                             <p className="info"> Service {key + 1} </p>
                             <div className="info"> - Service id: {service.id}</div>
@@ -33,6 +41,7 @@ const Service = (props) => {
                             <div className="info"> - Fee: {service.feeService}</div>
                             <h3 className="ref"> - Agreement: </h3>
                             <div className="info"> Id agreement: {service.agreementEntity.id}</div>
+                            <button className="btn-del" onClick={() => handleDelete(service.id, key)}>Delete</button>
                         </>}
                     </div>))
                 :

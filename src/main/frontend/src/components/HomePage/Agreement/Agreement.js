@@ -1,7 +1,7 @@
 import "./Agreement.css";
 import {Link} from "react-router-dom"
 import axios from "axios";
-import {AGREEMENTS, SUM_OF_FEE} from "../../const/apiConst";
+import {AGREEMENTS, DELETE_AGREEMENT, SUM_OF_FEE} from "../../const/apiConst";
 import {useEffect, useState} from "react";
 
 
@@ -20,24 +20,36 @@ const Agreement = (props) => {
         return result.data
     };
 
+    const handleDelete = async (id, key) => {
+        console.log(id, key)
+        await axios.delete(DELETE_AGREEMENT+id).then(() => {
+            const newList = agreements.filter((agreement) => agreement.id !== id);
+            setAgreements(newList)
+        })
+    }
+
 
     useEffect(() => {
         fetchData().then(async r => {
             let length = r.length;
             let array = []
             r.map((agreement,key) => {
-                getSumOfFee(agreement.id).then(r => {array[key] = r; if(key === length-1) setFeeOfSum(array)})
+                getSumOfFee(agreement.id).then(r => {
+                    array[key] = r;
+                    if(key === length-1)
+                        setFeeOfSum(array)
+                })
             })
             setAgreements(r);
         });
 
-    }, [])
+    },[])
 
     return (
         <div className="agreements">
             {agreements.length !== 0 ?
                 agreements.map((agreement, key) => (
-                    <div className="agreement">
+                    <div className="agreement" key={key}>
                         {agreement !== null && <>
                             <p className="info"> Agreement {key+1} </p>
                             <div className="info"> - Id: {agreement.id}</div>
@@ -47,6 +59,7 @@ const Agreement = (props) => {
                             <div className="info"> - Start: {agreement.startAgreement}</div>
                             <div className="info"> - End: {agreement.endAgreement}</div>
                             <div className="info"> - Total fee: {feeOfSum[key]}</div>
+                            <button className="btn-del" onClick={() => handleDelete(agreement.id, key)}>Delete</button>
                         </>}
                     </div>))
                 :
