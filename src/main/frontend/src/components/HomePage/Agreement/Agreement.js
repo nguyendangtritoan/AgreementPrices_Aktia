@@ -51,7 +51,7 @@ const Agreement = (props) => {
                     </div>))
                 :
                 <div className="agreement">
-                    <div className="info">THIS USER DOES NOT HAVE ANY AGREEMENT</div>
+                    <div className="info">THERE IS NO AGREEMENT EXIST</div>
                 </div>}
         </div>
     );

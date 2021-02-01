@@ -50,7 +50,6 @@ public class CustomerSer {
 
     public String deleteCustomer(long id){
         List<AgreementEntity> agreementEntityList = agreementRepo.findByCustomerEntity_IdContaining(id);
-        List<List<ServiceEntity>> serviceEntityList = null;
         for(AgreementEntity agreementEntity : agreementEntityList){
             for(ServiceEntity serviceEntity : serviceRepo.findByAgreementEntity_Id(agreementEntity.getId())){
                 serviceRepo.deleteById(serviceEntity.getId());
@@ -59,7 +58,7 @@ public class CustomerSer {
         }
 
         customerRepo.deleteById(id);
-        return "Customer removed! "+id;
+        return "Customer with id: "+id+" and reference agreements, services have been removed";
     }
 
     public CustomerEntity updateCustomer(CustomerEntity customerEntity){

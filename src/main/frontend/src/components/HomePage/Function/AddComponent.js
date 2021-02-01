@@ -29,7 +29,7 @@ function AddComponent(props) {
             "idNumber": idNumber
         }).then(r => {
             if (r.data.id !== null) {
-                setSuccess("1");
+                setSuccess(r.data.id);
                 setName("")
                 setIdNumber("")
             }
@@ -47,7 +47,7 @@ function AddComponent(props) {
             "endAgreement": endDate.replace("T", " ")
         }).then(r => {
             if (r.data.id !== null) {
-                setSuccess("1");
+                setSuccess(r.data.id);
                 setCustomerId("")
                 setAgrType("")
                 setStartDate("")
@@ -66,7 +66,7 @@ function AddComponent(props) {
             "feeService": parseInt(serviceFee)
         }).then(r => {
             if (r.data.id !== null) {
-                setSuccess("1");
+                setSuccess(r.data.id);
                 setAgreementId("")
                 setServiceType("")
                 setServiceFee("")
@@ -96,7 +96,7 @@ function AddComponent(props) {
                                onChange={e => setCustomerId(e.target.value)} />
                         <br />
                         <label>Agreement type: </label>
-                        <input required={true} name="type" placeholder="Agreement type"
+                        <input required={true} name="type" placeholder="Agreement type" value={agrType}
                                onChange={e => setAgrType(e.target.value)} />
                         <br />
                         <label>Start date: </label>
@@ -126,7 +126,7 @@ function AddComponent(props) {
                     </form>
                 </div>
             </div>
-            <p style={{"color": "green"}}>{isSuccess === "1" ? "Added" : ""}</p>
+            <p style={{"color": "green"}}>{"Id of object added: "+isSuccess}</p>
         </>
     )
 }

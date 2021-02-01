@@ -12,3 +12,6 @@ export const ADD_SERVICE = "http://localhost:8080/service/save"
 
 //UPDATE DATA
 export const UPDATE_SERVICE = "http://localhost:8080/service/update"
+
+//DELETE DATA
+export const DELETE_CUSTOMER = "http://localhost:8080/customer/delete/"

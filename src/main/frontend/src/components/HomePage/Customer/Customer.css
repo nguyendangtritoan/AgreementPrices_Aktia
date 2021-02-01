@@ -36,8 +36,35 @@
 }
 
 
-.btn {
-    background-color: lightcoral;
+.btn-detail {
+    background-color: #ffe8a1;
+}
+
+.btn-del {
+    background-color:  lightcoral;
+}
+
+button {
+    display: inline-block;
+    padding: 15px 15px;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #000000;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+button:hover {background-color: #f1b0b7}
+
+button:active {
+    background-color: #86cfda;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 .customers {
